@@ -1,0 +1,156 @@
+---
+import { ui } from '@i18n/ui';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang?: 'zh' | 'en';
+  currentPath?: string;
+}
+
+const { title, description = '广州耀威包装有限公司 - 专业食品、药用、保健品、化妆品包装容器生产企业', lang = 'zh', currentPath = '/' } = Astro.props;
+const t = ui[lang];
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="包装容器,食品包装,药用包装,保健品包装,化妆品包装,PE瓶,PET瓶,广州耀威" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} - {lang === 'zh' ? '广州耀威包装' : 'Yaowei Packaging'}</title>
+  </head>
+  <body class="bg-white text-gray-800 font-sans antialiased">
+    <!-- Header -->
+    <header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-20">
+          <!-- Logo -->
+          <a href={`/${lang === 'en' ? 'en/' : ''}`} class="flex items-center space-x-3">
+            <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold text-xl">耀</span>
+            </div>
+            <div class="hidden sm:block">
+              <div class="text-lg font-bold text-gray-900">{lang === 'zh' ? '耀威包装' : 'YAO WEI'}</div>
+              <div class="text-xs text-gray-500">{lang === 'zh' ? 'YAOWEI PACKAGING' : 'GUANGZHOU'}</div>
+            </div>
+          </a>
+
+          <!-- Navigation -->
+          <nav class="hidden lg:flex items-center space-x-8">
+            <a href={`/${lang === 'en' ? 'en/' : ''}`} class="nav-link {currentPath === '/' ? 'text-blue-600 font-semibold' : 'text-gray-700 hover:text-blue-600'}">{t.nav.home}</a>
+            <a href={`/${lang === 'en' ? 'en/' : ''}about`} class="nav-link {currentPath === '/about' ? 'text-blue-600 font-semibold' : 'text-gray-700 hover:text-blue-600'}">{t.nav.about}</a>
+            <a href={`/${lang === 'en' ? 'en/' : ''}products`} class="nav-link {currentPath === '/products' ? 'text-blue-600 font-semibold' : 'text-gray-700 hover:text-blue-600'}">{t.nav.products}</a>
+            <a href={`/${lang === 'en' ? 'en/' : ''}news`} class="nav-link {currentPath === '/news' ? 'text-blue-600 font-semibold' : 'text-gray-700 hover:text-blue-600'}">{t.nav.news}</a>
+            <a href={`/${lang === 'en' ? 'en/' : ''}honors`} class="nav-link {currentPath === '/honors' ? 'text-blue-600 font-semibold' : 'text-gray-700 hover:text-blue-600'}">{t.nav.honors}</a>
+            <a href={`/${lang === 'en' ? 'en/' : ''}contact`} class="nav-link {currentPath === '/contact' ? 'text-blue-600 font-semibold' : 'text-gray-700 hover:text-blue-600'}">{t.nav.contact}</a>
+          </nav>
+
+          <!-- Language Switch & CTA -->
+          <div class="flex items-center space-x-4">
+            <a href={lang === 'zh' ? '/en' + currentPath : currentPath} class="text-sm text-gray-600 hover:text-blue-600 border border-gray-300 rounded px-3 py-1 transition">
+              {lang === 'zh' ? 'EN' : '中文'}
+            </a>
+            <a href={`/${lang === 'en' ? 'en/' : ''}contact`} class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition text-sm font-medium">
+              {lang === 'zh' ? '在线询盘' : 'Inquiry'}
+            </a>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden p-2">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
+        <nav class="container mx-auto px-4 py-4 flex flex-col space-y-3">
+          <a href={`/${lang === 'en' ? 'en/' : ''}`} class="py-2 text-gray-700 hover:text-blue-600">{t.nav.home}</a>
+          <a href={`/${lang === 'en' ? 'en/' : ''}about`} class="py-2 text-gray-700 hover:text-blue-600">{t.nav.about}</a>
+          <a href={`/${lang === 'en' ? 'en/' : ''}products`} class="py-2 text-gray-700 hover:text-blue-600">{t.nav.products}</a>
+          <a href={`/${lang === 'en' ? 'en/' : ''}news`} class="py-2 text-gray-700 hover:text-blue-600">{t.nav.news}</a>
+          <a href={`/${lang === 'en' ? 'en/' : ''}honors`} class="py-2 text-gray-700 hover:text-blue-600">{t.nav.honors}</a>
+          <a href={`/${lang === 'en' ? 'en/' : ''}contact`} class="py-2 text-gray-700 hover:text-blue-600">{t.nav.contact}</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+      <div class="container mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Company Info -->
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                <span class="text-white font-bold text-lg">耀</span>
+              </div>
+              <div>
+                <div class="font-bold">{lang === 'zh' ? '耀威包装' : 'YAO WEI'}</div>
+                <div class="text-xs text-gray-400">YAOWEI PACKAGING</div>
+              </div>
+            </div>
+            <p class="text-gray-400 text-sm">{lang === 'zh' ? '为天下健康产品做好包装' : 'Quality Packaging for Health Products Worldwide'}</p>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="font-semibold mb-4">{lang === 'zh' ? '快速导航' : 'Quick Links'}</h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li><a href={`/${lang === 'en' ? 'en/' : ''}about`} class="hover:text-white transition">{t.nav.about}</a></li>
+              <li><a href={`/${lang === 'en' ? 'en/' : ''}products`} class="hover:text-white transition">{t.nav.products}</a></li>
+              <li><a href={`/${lang === 'en' ? 'en/' : ''}news`} class="hover:text-white transition">{t.nav.news}</a></li>
+              <li><a href={`/${lang === 'en' ? 'en/' : ''}contact`} class="hover:text-white transition">{t.nav.contact}</a></li>
+            </ul>
+          </div>
+
+          <!-- Product Categories -->
+          <div>
+            <h4 class="font-semibold mb-4">{lang === 'zh' ? '产品系列' : 'Products'}</h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li><a href={`/${lang === 'en' ? 'en/' : ''}products/pe`} class="hover:text-white transition">{t.products.categories.pe}</a></li>
+              <li><a href={`/${lang === 'en' ? 'en/' : ''}products/pet`} class="hover:text-white transition">{t.products.categories.pet}</a></li>
+              <li><a href={`/${lang === 'en' ? 'en/' : ''}products/cap`} class="hover:text-white transition">{t.products.categories.cap}</a></li>
+              <li><a href={`/${lang === 'en' ? 'en/' : ''}products/pp`} class="hover:text-white transition">{t.products.categories.pp}</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h4 class="font-semibold mb-4">{t.contact.title}</h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li>{t.contact.phone}: 13710080413</li>
+              <li>{t.contact.mobile}: 13710082243</li>
+              <li>{t.contact.address}: {lang === 'zh' ? '广州市白云区钟落潭镇广从九路1019号' : 'No.1019 Guangcong 9th Road, Zhongluotan, Baiyun District, Guangzhou'}</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-500">
+          <p>{t.footer.rights} &copy; {new Date().getFullYear()}</p>
+          <p class="mt-2"><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener" class="hover:text-gray-400">{t.footer.icp}: ICP342600727</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+    </script>
+  </body>
+</html>

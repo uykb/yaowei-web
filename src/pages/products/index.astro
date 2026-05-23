@@ -1,0 +1,76 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const lang = 'zh';
+const t = (await import('@i18n/ui')).ui.zh;
+
+const allProducts = await getCollection('products');
+const products = allProducts.sort((a, b) => a.data.order - b.data.order);
+
+const categories = [
+  { id: 'pe', name: t.products.categories.pe },
+  { id: 'pet', name: t.products.categories.pet },
+  { id: 'cap', name: t.products.categories.cap },
+  { id: 'pp', name: t.products.categories.pp },
+  { id: 'new', name: t.products.categories.new },
+];
+
+const categoryNames = Object.fromEntries(categories.map(c => [c.id, c.name]));
+---
+
+<BaseLayout title={t.products.title} lang={lang} currentPath="/products">
+  <!-- Page Header -->
+  <section class="bg-gradient-to-br from-blue-900 to-blue-700 py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">{t.products.title}</h1>
+      <div class="w-20 h-1 bg-white/50 mx-auto mb-4"></div>
+      <p class="text-xl text-blue-100">{t.products.subtitle}</p>
+    </div>
+  </section>
+
+  <!-- Category Filter -->
+  <section class="py-12 bg-white border-b">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-wrap justify-center gap-4">
+        <button class="category-btn px-6 py-2 bg-blue-600 text-white rounded-full font-medium" data-category="all">
+          {lang === 'zh' ? '全部产品' : 'All Products'} ({products.length})
+        </button>
+        {categories.map(cat => {
+          const count = products.filter(p => p.data.category === cat.id).length;
+          return (
+            <button class="category-btn px-6 py-2 bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition font-medium" data-category={cat.id}>
+              {cat.name} ({count})
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Grid -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {products.map(product => (
+          <a href={`/products/${product.slug}`} class="group">
+            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300">
+              <div class="aspect-square bg-gray-100 flex items-center justify-center relative overflow-hidden">
+                {product.data.image ? (
+                  <img src={product.data.image} alt={product.data.title} class="w-full h-full object-cover" />
+                ) : (
+                  <span class="text-gray-400">产品图片</span>
+                )}
+                <div class="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition duration-300"></div>
+              </div>
+              <div class="p-4">
+                <h3 class="font-medium text-gray-900 group-hover:text-blue-600 transition">{product.data.title}</h3>
+                <p class="text-sm text-gray-500 mt-1">{categoryNames[product.data.category]}</p>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

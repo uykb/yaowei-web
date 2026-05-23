@@ -1,0 +1,83 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+const lang = 'zh';
+const t = (await import('@i18n/ui')).ui.zh;
+---
+
+<BaseLayout title={t.nav.about} lang={lang} currentPath="/about">
+  <!-- Page Header -->
+  <section class="bg-gradient-to-br from-blue-900 to-blue-700 py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">{t.nav.about}</h1>
+      <div class="w-20 h-1 bg-white/50 mx-auto"></div>
+    </div>
+  </section>
+
+  <!-- Company Intro -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="prose prose-lg mx-auto text-gray-600">
+          <p class="text-lg leading-relaxed mb-6">
+            广州耀威包装有限公司是一家集设计、开发、生产以及销售于一体的全方位产品包装容器生产企业。公司于2014年在广州市白云区太和镇成立；2022年在广州白云区钟落潭建立新工厂（新和工厂），现拥有近3万平厂房面积，包含600多平研发测试实验室。
+          </p>
+          <p class="text-lg leading-relaxed mb-6">
+            公司现有生产设备和检测仪器320余台，专业生产食品、药用、保健品、化妆品包装容器。
+          </p>
+          <p class="text-lg leading-relaxed mb-6">
+            自公司成立以来，本着"为天下健康产品做好包装"的使命，遵循"打造一个可持续发展的科技包装企业"的愿景，耀威包装的合作商已经由国内发展为竞争力强大的国际塑胶容器供应商。产品热销海外，覆盖新加坡、印度、日本、马来西亚、巴基斯坦等亚洲国家，以及美国、英国、葡萄牙、澳洲、西班牙、新西兰等国家。
+          </p>
+          <p class="text-lg leading-relaxed mb-6">
+            公司不仅按照QS生产许可证的要求，编制了一系列流程文件，并完全导入工作控制中，使管理工作走向规范化、标准化的轨道。同时，公司积极响应国家的环保政策，致力于研发和生产可降解材料的包装容器，以减少对环境的影响。
+          </p>
+          <p class="text-lg leading-relaxed mb-6">
+            在技术创新方面，耀威包装不断引进先进的生产设备和技术，提升生产效率和产品质量。公司与多所高校和科研机构建立了合作关系，开展技术研发和产品创新，力求在激烈的市场竞争中保持领先地位。
+          </p>
+          <p class="text-lg leading-relaxed mb-6">
+            为了更好地服务客户，公司建立了完善的售后服务体系，确保客户在使用产品过程中遇到的问题能够得到及时解决。通过定期的客户回访和市场调研，耀威包装不断优化产品设计和服务流程，以满足客户日益增长的需求。
+          </p>
+          <p class="text-lg leading-relaxed">
+            展望未来，耀威包装将继续秉承"为天下健康产品做好包装"的使命，致力于成为全球领先的产品包装容器供应商。公司将加大在研发和市场拓展方面的投入，推动品牌国际化进程，力争在未来几年内实现更大的跨越式发展。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company Values -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl p-8 shadow-sm">
+          <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">使命</h3>
+          <p class="text-gray-600">为天下健康产品做好包装</p>
+        </div>
+        <div class="bg-white rounded-xl p-8 shadow-sm">
+          <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">愿景</h3>
+          <p class="text-gray-600">打造一个可持续发展的科技包装企业</p>
+        </div>
+        <div class="bg-white rounded-xl p-8 shadow-sm">
+          <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.414 3.414 0 00-2.079 3.082c-.223 1.442-.543 2.882-.958 4.282a3.414 3.414 0 00.438 2.682c.44.712 1.155 1.14 1.958 1.14h13.596c.803 0 1.518-.428 1.958-1.14a3.414 3.414 0 00.438-2.682c-.415-1.4-.735-2.84-.958-4.282a3.414 3.414 0 00-2.079-3.082l-3.078-1.35a3.414 3.414 0 00-2.724 0l-3.078 1.35z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">价值观</h3>
+          <p class="text-gray-600">创新、品质、环保、共赢</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

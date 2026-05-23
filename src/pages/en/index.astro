@@ -1,0 +1,203 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+const lang = 'en';
+const t = (await import('@i18n/ui')).ui.en;
+---
+
+<BaseLayout title={t.nav.home} lang={lang} currentPath="/">
+  <!-- Hero Section -->
+  <section class="relative h-[600px] lg:h-[700px] flex items-center overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600">
+      <div class="absolute inset-0 opacity-20">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] bg-repeat"></div>
+      </div>
+      <div class="absolute top-20 right-20 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-20 left-20 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+          {t.home.hero_title}
+        </h1>
+        <p class="text-xl text-blue-100 mb-8">
+          {t.home.hero_subtitle}
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/en/products" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition inline-block">
+            {t.home.hero_cta}
+          </a>
+          <a href="/en/contact" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition inline-block">
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-bold text-blue-600 mb-2">30,000<span class="text-2xl">m²</span></div>
+          <div class="text-gray-600">{t.home.stats_factory}</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-bold text-blue-600 mb-2">320<span class="text-2xl">+</span></div>
+          <div class="text-gray-600">{t.home.stats_equipment}</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-bold text-blue-600 mb-2">15<span class="text-2xl">+</span></div>
+          <div class="text-gray-600">{t.home.stats_export}</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-bold text-blue-600 mb-2">10<span class="text-2xl">+</span></div>
+          <div class="text-gray-600">{t.home.stats_years}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Preview -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t.nav.about}</h2>
+        <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-gray-600 text-lg leading-relaxed mb-6">
+            Guangzhou Yaowei Packaging Co., Ltd. is a comprehensive packaging container manufacturer integrating design, development, production and sales. Established in 2014 in Taihe Town, Baiyun District, Guangzhou, we built a new factory in 2022 with nearly 30,000 square meters of factory space, including a 600+ square meter R&D testing laboratory.
+          </p>
+          <p class="text-gray-600 text-lg leading-relaxed mb-8">
+            With over 320 production equipment and testing instruments, we specialize in food, pharmaceutical, health care, and cosmetic packaging containers. Our products are exported to Singapore, India, Japan, Malaysia, Pakistan, USA, UK, Portugal, Australia, Spain, New Zealand and more.
+          </p>
+          <div class="flex flex-wrap gap-6">
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <span class="text-gray-700">QS Certified</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <span class="text-gray-700">ISO9001</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <span class="text-gray-700">Eco-Friendly</span>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl p-6 text-white">
+            <div class="text-3xl font-bold mb-2">{t.home.mission_title}</div>
+            <p class="text-blue-100">{t.home.mission_desc}</p>
+          </div>
+          <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 text-white">
+            <div class="text-3xl font-bold mb-2">{t.home.vision_title}</div>
+            <p class="text-gray-300">{t.home.vision_desc}</p>
+          </div>
+          <div class="col-span-2 bg-gray-200 rounded-2xl h-48 flex items-center justify-center">
+            <span class="text-gray-500">Factory View</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Preview -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t.products.title}</h2>
+        <div class="w-20 h-1 bg-blue-600 mx-auto mb-4"></div>
+        <p class="text-gray-600 text-lg">{t.products.subtitle}</p>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-4 mb-12">
+        <a href="/en/products/pe" class="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">{t.products.categories.pe}</a>
+        <a href="/en/products/pet" class="px-6 py-2 bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition">{t.products.categories.pet}</a>
+        <a href="/en/products/cap" class="px-6 py-2 bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition">{t.products.categories.cap}</a>
+        <a href="/en/products/pp" class="px-6 py-2 bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition">{t.products.categories.pp}</a>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <a href="/en/products/90ml-small-cup" class="group">
+          <div class="bg-gray-50 rounded-xl overflow-hidden hover:shadow-lg transition">
+            <div class="aspect-square bg-gray-200 flex items-center justify-center">
+              <span class="text-gray-400">Product Image</span>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900 group-hover:text-blue-600 transition">90mL Small Cup</h3>
+            </div>
+          </div>
+        </a>
+        <a href="/en/products/wheel-bottle" class="group">
+          <div class="bg-gray-50 rounded-xl overflow-hidden hover:shadow-lg transition">
+            <div class="aspect-square bg-gray-200 flex items-center justify-center">
+              <span class="text-gray-400">Product Image</span>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900 group-hover:text-blue-600 transition">Wheel Bottle</h3>
+            </div>
+          </div>
+        </a>
+        <a href="/en/products/brown-round-bottle" class="group">
+          <div class="bg-gray-50 rounded-xl overflow-hidden hover:shadow-lg transition">
+            <div class="aspect-square bg-gray-200 flex items-center justify-center">
+              <span class="text-gray-400">Product Image</span>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900 group-hover:text-blue-600 transition">Brown Round Bottle</h3>
+            </div>
+          </div>
+        </a>
+        <a href="/en/products/small-capsule-bottle" class="group">
+          <div class="bg-gray-50 rounded-xl overflow-hidden hover:shadow-lg transition">
+            <div class="aspect-square bg-gray-200 flex items-center justify-center">
+              <span class="text-gray-400">Product Image</span>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900 group-hover:text-blue-600 transition">Small Capsule Bottle</h3>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="/en/products" class="inline-block border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition">
+          View All Products
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-blue-600 to-blue-800">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+        Looking for Professional Packaging Solutions?
+      </h2>
+      <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+        Our professional team provides customized packaging solutions, one-stop service from design to production
+      </p>
+      <a href="/en/contact" class="inline-block bg-white text-blue-600 px-10 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition">
+        Get a Quote Now
+      </a>
+    </div>
+  </section>
+</BaseLayout>
