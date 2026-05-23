@@ -56,14 +56,105 @@ const t = (await import('@i18n/ui')).ui.zh;
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900">{t.contact.address}</h3>
-                <p class="text-gray-600">广州市白云区钟落潭镇广从九路1019号</p>
+                <div class="mt-2 space-y-2">
+                  <div class="bg-gray-50 rounded-lg p-3">
+                    <p class="text-sm font-medium text-gray-700">新和工厂</p>
+                    <p class="text-gray-600 text-sm">广州市白云区钟落潭镇广从九路1019号</p>
+                  </div>
+                  <div class="bg-gray-50 rounded-lg p-3">
+                    <p class="text-sm font-medium text-gray-700">鳌头工厂</p>
+                    <p class="text-gray-600 text-sm">广州市从化区鳌头镇</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- Map Placeholder -->
-          <div class="mt-8 bg-gray-100 rounded-xl h-64 flex items-center justify-center">
-            <span class="text-gray-500">{lang === 'zh' ? '地图加载区域' : 'Map Area'}</span>
+          <!-- Factory Locations -->
+          <div class="mt-8">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">{lang === 'zh' ? '工厂位置' : 'Factory Locations'}</h3>
+            
+            <!-- Location Tabs -->
+            <div class="flex space-x-2 mb-4">
+              <button class="location-tab active px-4 py-2 bg-blue-600 text-white text-sm rounded-lg font-medium transition" data-location="xinhe">
+                {lang === 'zh' ? '新和工厂' : 'Xinhe Factory'}
+              </button>
+              <button class="location-tab px-4 py-2 bg-gray-100 text-gray-700 text-sm rounded-lg hover:bg-gray-200 transition font-medium" data-location="aotou">
+                {lang === 'zh' ? '鳌头工厂' : 'Aotou Factory'}
+              </button>
+            </div>
+
+            <!-- Xinhe Factory Map -->
+            <div id="map-xinhe" class="map-container rounded-xl overflow-hidden hidden">
+              <iframe 
+                src="https://map.baidu.com/?newmap=1&ie=utf-8&s=s&wd=广州耀威包装有限公司新和工厂&from=mapshare" 
+                width="100%" 
+                height="300" 
+                frameborder="0" 
+                scrolling="no"
+                class="w-full"
+                loading="lazy"
+                title="新和工厂地图">
+              </iframe>
+              <div class="bg-white p-4 border-t">
+                <div class="flex items-start justify-between">
+                  <div>
+                    <h4 class="font-semibold text-gray-900">广州耀威包装有限公司(新和公司)</h4>
+                    <p class="text-sm text-gray-600 mt-1">广州市白云区钟落潭镇广从九路1019号</p>
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-3">
+                  <a href="https://uri.amap.com/search?query=广州耀威包装有限公司新和公司" target="_blank" rel="noopener" class="inline-flex items-center px-3 py-1.5 bg-green-50 text-green-700 text-sm rounded-lg hover:bg-green-100 transition">
+                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    高德地图
+                  </a>
+                  <a href="https://map.baidu.com/search/广州耀威包装有限公司新和公司" target="_blank" rel="noopener" class="inline-flex items-center px-3 py-1.5 bg-blue-50 text-blue-700 text-sm rounded-lg hover:bg-blue-100 transition">
+                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    百度地图
+                  </a>
+                  <a href="https://apis.map.qq.com/uri/v1/search?keyword=广州耀威包装有限公司新和公司" target="_blank" rel="noopener" class="inline-flex items-center px-3 py-1.5 bg-red-50 text-red-700 text-sm rounded-lg hover:bg-red-100 transition">
+                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    腾讯地图
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Aotou Factory Map -->
+            <div id="map-aotou" class="map-container rounded-xl overflow-hidden">
+              <iframe 
+                src="https://map.baidu.com/?newmap=1&ie=utf-8&s=s&wd=广州耀威包装有限公司鳌头工厂&from=mapshare" 
+                width="100%" 
+                height="300" 
+                frameborder="0" 
+                scrolling="no"
+                class="w-full"
+                loading="lazy"
+                title="鳌头工厂地图">
+              </iframe>
+              <div class="bg-white p-4 border-t">
+                <div class="flex items-start justify-between">
+                  <div>
+                    <h4 class="font-semibold text-gray-900">广州耀威包装有限公司(鳌头公司)</h4>
+                    <p class="text-sm text-gray-600 mt-1">广州市从化区鳌头镇</p>
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-3">
+                  <a href="https://uri.amap.com/search?query=广州耀威包装有限公司鳌头公司" target="_blank" rel="noopener" class="inline-flex items-center px-3 py-1.5 bg-green-50 text-green-700 text-sm rounded-lg hover:bg-green-100 transition">
+                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    高德地图
+                  </a>
+                  <a href="https://map.baidu.com/search/广州耀威包装有限公司鳌头公司" target="_blank" rel="noopener" class="inline-flex items-center px-3 py-1.5 bg-blue-50 text-blue-700 text-sm rounded-lg hover:bg-blue-100 transition">
+                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    百度地图
+                  </a>
+                  <a href="https://apis.map.qq.com/uri/v1/search?keyword=广州耀威包装有限公司鳌头公司" target="_blank" rel="noopener" class="inline-flex items-center px-3 py-1.5 bg-red-50 text-red-700 text-sm rounded-lg hover:bg-red-100 transition">
+                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    腾讯地图
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -113,6 +204,7 @@ const t = (await import('@i18n/ui')).ui.zh;
 </BaseLayout>
 
 <script>
+  // Form submission
   const form = document.getElementById('inquiry-form');
   const successMsg = document.getElementById('form-success');
   
@@ -120,13 +212,32 @@ const t = (await import('@i18n/ui')).ui.zh;
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
-      
-      // TODO: 连接到实际的 API 端点
       console.log('Form submitted:', Object.fromEntries(formData));
-      
-      // 显示成功消息
       form.classList.add('hidden');
       successMsg.classList.remove('hidden');
     });
   }
+
+  // Location tabs
+  const tabs = document.querySelectorAll('.location-tab');
+  const maps = document.querySelectorAll('.map-container');
+  
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const location = tab.dataset.location;
+      
+      // Update tab styles
+      tabs.forEach(t => {
+        t.classList.remove('active', 'bg-blue-600', 'text-white');
+        t.classList.add('bg-gray-100', 'text-gray-700');
+      });
+      tab.classList.add('active', 'bg-blue-600', 'text-white');
+      tab.classList.remove('bg-gray-100', 'text-gray-700');
+      
+      // Show/hide maps
+      maps.forEach(m => m.classList.add('hidden'));
+      const targetMap = document.getElementById(`map-${location}`);
+      if (targetMap) targetMap.classList.remove('hidden');
+    });
+  });
 </script>
