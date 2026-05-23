@@ -1,0 +1,25 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+const lang = 'zh';
+---
+
+<BaseLayout title="404 - 页面未找到" lang={lang}>
+  <section class="min-h-[60vh] flex items-center justify-center bg-gray-50">
+    <div class="text-center px-4">
+      <div class="text-8xl font-bold text-blue-600 mb-4">404</div>
+      <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">页面未找到</h1>
+      <p class="text-gray-600 mb-8 max-w-md mx-auto">
+        抱歉，您访问的页面不存在或已被移除。请返回首页或联系我们。
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition inline-block">
+          返回首页
+        </a>
+        <a href="/contact" class="border-2 border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition inline-block">
+          联系我们
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

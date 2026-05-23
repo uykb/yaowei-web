@@ -1,0 +1,83 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+const lang = 'en';
+const t = (await import('@i18n/ui')).ui.en;
+---
+
+<BaseLayout title={t.nav.about} lang={lang} currentPath="/about">
+  <!-- Page Header -->
+  <section class="bg-gradient-to-br from-blue-900 to-blue-700 py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">{t.nav.about}</h1>
+      <div class="w-20 h-1 bg-white/50 mx-auto"></div>
+    </div>
+  </section>
+
+  <!-- Company Intro -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="prose prose-lg mx-auto text-gray-600">
+          <p class="text-lg leading-relaxed mb-6">
+            Guangzhou Yaowei Packaging Co., Ltd. is a comprehensive packaging container manufacturer integrating design, development, production and sales. Established in 2014 in Taihe Town, Baiyun District, Guangzhou, we built a new factory in 2022 in Zhongluotan, Baiyun District with nearly 30,000 square meters of factory space, including a 600+ square meter R&D testing laboratory.
+          </p>
+          <p class="text-lg leading-relaxed mb-6">
+            With over 320 production equipment and testing instruments, we specialize in food, pharmaceutical, health care, and cosmetic packaging containers.
+          </p>
+          <p class="text-lg leading-relaxed mb-6">
+            Since our establishment, guided by the mission of "Quality Packaging for Health Products Worldwide" and the vision of "Building a Sustainable Technology-Driven Packaging Enterprise", Yaowei Packaging has grown from a domestic supplier to a competitive international plastic container provider. Our products are exported to Singapore, India, Japan, Malaysia, Pakistan and other Asian countries, as well as the USA, UK, Portugal, Australia, Spain, New Zealand and more.
+          </p>
+          <p class="text-lg leading-relaxed mb-6">
+            The company has not only compiled a series of process documents in accordance with QS production license requirements, but also fully integrated them into work control, bringing management onto a standardized and规范化 track. Meanwhile, we actively respond to national environmental policies, committed to developing and producing biodegradable packaging containers to reduce environmental impact.
+          </p>
+          <p class="text-lg leading-relaxed mb-6">
+            In terms of technological innovation, Yaowei Packaging continuously introduces advanced production equipment and technology to improve production efficiency and product quality. We have established cooperative relationships with multiple universities and research institutions to carry out technology R&D and product innovation, striving to maintain a leading position in the fierce market competition.
+          </p>
+          <p class="text-lg leading-relaxed mb-6">
+            To better serve our customers, the company has established a comprehensive after-sales service system to ensure that any issues encountered during product use are promptly resolved. Through regular customer回访 and market research, Yaowei Packaging continuously optimizes product design and service processes to meet the growing needs of our customers.
+          </p>
+          <p class="text-lg leading-relaxed">
+            Looking ahead, Yaowei Packaging will continue to uphold the mission of "Quality Packaging for Health Products Worldwide" and strive to become a global leading packaging container supplier. We will increase investment in R&D and market expansion, promote brand internationalization, and strive to achieve greater leapfrog development in the coming years.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company Values -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl p-8 shadow-sm">
+          <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Mission</h3>
+          <p class="text-gray-600">To provide quality packaging for health products worldwide</p>
+        </div>
+        <div class="bg-white rounded-xl p-8 shadow-sm">
+          <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Vision</h3>
+          <p class="text-gray-600">To build a sustainable technology-driven packaging enterprise</p>
+        </div>
+        <div class="bg-white rounded-xl p-8 shadow-sm">
+          <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.414 3.414 0 00-2.079 3.082c-.223 1.442-.543 2.882-.958 4.282a3.414 3.414 0 00.438 2.682c.44.712 1.155 1.14 1.958 1.14h13.596c.803 0 1.518-.428 1.958-1.14a3.414 3.414 0 00.438-2.682c-.415-1.4-.735-2.84-.958-4.282a3.414 3.414 0 00-2.079-3.082l-3.078-1.35a3.414 3.414 0 00-2.724 0l-3.078 1.35z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Values</h3>
+          <p class="text-gray-600">Innovation, Quality, Environmental Protection, Win-Win</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

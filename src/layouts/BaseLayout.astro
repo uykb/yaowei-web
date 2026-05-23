@@ -1,5 +1,6 @@
 ---
 import { ui } from '@i18n/ui';
+import FloatingContact from '@components/FloatingContact.astro';
 
 interface Props {
   title: string;
@@ -10,6 +11,9 @@ interface Props {
 
 const { title, description = '广州耀威包装有限公司 - 专业食品、药用、保健品、化妆品包装容器生产企业', lang = 'zh', currentPath = '/' } = Astro.props;
 const t = ui[lang];
+const canonicalUrl = `https://www.gzyaowei.cn${currentPath === '/' ? '' : currentPath}`;
+const ogTitle = `${title} - ${lang === 'zh' ? '广州耀威包装' : 'Yaowei Packaging'}`;
+const ogDescription = description;
 ---
 
 <!doctype html>
@@ -18,9 +22,55 @@ const t = ui[lang];
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="keywords" content="包装容器,食品包装,药用包装,保健品包装,化妆品包装,PE瓶,PET瓶,广州耀威" />
+    <meta name="keywords" content="包装容器,食品包装,药用包装,保健品包装,化妆品包装,PE瓶,PET瓶,广州耀威,packaging containers,food packaging,pharmaceutical packaging" />
+    <meta name="author" content="广州耀威包装有限公司" />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title} - {lang === 'zh' ? '广州耀威包装' : 'Yaowei Packaging'}</title>
+    <title>{ogTitle}</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content={lang === 'zh' ? 'zh_CN' : 'en_US'} />
+    <meta property="og:site_name" content="耀威包装 Yaowei Packaging" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={ogDescription} />
+
+    <!-- Hreflang -->
+    {lang === 'zh' ? (
+      <>
+        <link rel="alternate" hreflang="en" href={`https://www.gzyaowei.cn/en${currentPath === '/' ? '' : currentPath}`} />
+        <link rel="alternate" hreflang="zh" href={canonicalUrl} />
+      </>
+    ) : (
+      <>
+        <link rel="alternate" hreflang="zh" href={`https://www.gzyaowei.cn${currentPath === '/en' ? '' : currentPath.replace('/en', '')}`} />
+        <link rel="alternate" hreflang="en" href={canonicalUrl} />
+      </>
+    )}
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": lang === 'zh' ? "广州耀威包装有限公司" : "Guangzhou Yaowei Packaging Co., Ltd.",
+      "url": "https://www.gzyaowei.cn",
+      "logo": "https://www.gzyaowei.cn/favicon.svg",
+      "telephone": "+86-13710080413",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "广州市白云区钟落潭镇广从九路1019号",
+        "addressLocality": "Guangzhou",
+        "addressRegion": "Guangdong",
+        "addressCountry": "CN"
+      },
+      "sameAs": []
+    })} />
   </head>
   <body class="bg-white text-gray-800 font-sans antialiased">
     <!-- Header -->
@@ -142,6 +192,16 @@ const t = ui[lang];
       </div>
     </footer>
 
+    <!-- Floating Contact Button -->
+    <FloatingContact />
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 left-6 z-50 w-12 h-12 bg-gray-800 text-white rounded-full shadow-lg hover:bg-gray-700 transition opacity-0 invisible flex items-center justify-center" aria-label="Back to top">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+      </svg>
+    </button>
+
     <script>
       // Mobile menu toggle
       const menuBtn = document.getElementById('mobile-menu-btn');
@@ -149,6 +209,24 @@ const t = ui[lang];
       if (menuBtn && mobileMenu) {
         menuBtn.addEventListener('click', () => {
           mobileMenu.classList.toggle('hidden');
+        });
+      }
+
+      // Back to top button
+      const backToTop = document.getElementById('back-to-top');
+      if (backToTop) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 300) {
+            backToTop.classList.remove('opacity-0', 'invisible');
+            backToTop.classList.add('opacity-100', 'visible');
+          } else {
+            backToTop.classList.add('opacity-0', 'invisible');
+            backToTop.classList.remove('opacity-100', 'visible');
+          }
+        });
+
+        backToTop.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       }
     </script>

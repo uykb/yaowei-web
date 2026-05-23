@@ -2,8 +2,8 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-const lang = 'zh';
-const t = (await import('@i18n/ui')).ui.zh;
+const lang = 'en';
+const t = (await import('@i18n/ui')).ui.en;
 
 const allProducts = await getCollection('products');
 const products = allProducts.sort((a, b) => a.data.order - b.data.order);
@@ -20,7 +20,6 @@ const categoryNames = Object.fromEntries(categories.map(c => [c.id, c.name]));
 ---
 
 <BaseLayout title={t.products.title} lang={lang} currentPath="/products">
-  <!-- Page Header -->
   <section class="bg-gradient-to-br from-blue-900 to-blue-700 py-20">
     <div class="container mx-auto px-4 text-center">
       <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">{t.products.title}</h1>
@@ -29,12 +28,11 @@ const categoryNames = Object.fromEntries(categories.map(c => [c.id, c.name]));
     </div>
   </section>
 
-  <!-- Category Filter -->
   <section class="py-12 bg-white border-b">
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap justify-center gap-4">
         <button class="category-btn px-6 py-2 bg-blue-600 text-white rounded-full font-medium" data-category="all">
-          {lang === 'zh' ? '全部产品' : 'All Products'} ({products.length})
+          All Products ({products.length})
         </button>
         {categories.map(cat => {
           const count = products.filter(p => p.data.category === cat.id).length;
@@ -48,18 +46,17 @@ const categoryNames = Object.fromEntries(categories.map(c => [c.id, c.name]));
     </div>
   </section>
 
-  <!-- Product Grid -->
   <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
       <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map(product => (
-          <a href={`/products/${product.slug}`} class="product-card group" data-category={product.data.category}>
+          <a href={`/en/products/${product.slug}`} class="product-card group" data-category={product.data.category}>
             <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300">
               <div class="aspect-square bg-gray-100 flex items-center justify-center relative overflow-hidden">
                 {product.data.image ? (
                   <img src={product.data.image} alt={product.data.title} class="w-full h-full object-cover" />
                 ) : (
-                  <span class="text-gray-400">产品图片</span>
+                  <span class="text-gray-400">Product Image</span>
                 )}
                 <div class="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition duration-300"></div>
               </div>
@@ -75,7 +72,7 @@ const categoryNames = Object.fromEntries(categories.map(c => [c.id, c.name]));
         <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5m0 0H4m16 0H4"></path>
         </svg>
-        <p class="text-gray-500 text-lg">暂无该分类产品</p>
+        <p class="text-gray-500 text-lg">No products in this category</p>
       </div>
     </div>
   </section>
@@ -89,7 +86,6 @@ const categoryNames = Object.fromEntries(categories.map(c => [c.id, c.name]));
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
       const category = btn.dataset.category;
-      
       buttons.forEach(b => {
         b.classList.remove('bg-blue-600', 'text-white');
         b.classList.add('bg-gray-100', 'text-gray-700');
