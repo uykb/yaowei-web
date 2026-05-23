@@ -15,34 +15,42 @@
 
 ```
 yaowei-website/
-├── frontend/
-│   ├── src/
-│   │   ├── content/          # 内容集合 (Markdown)
-│   │   │   ├── products/     # 产品数据
-│   │   │   └── news/         # 新闻数据
-│   │   ├── pages/            # 页面路由
-│   │   │   ├── index.astro           # 中文首页
-│   │   │   ├── about.astro           # 关于我们
-│   │   │   ├── contact.astro         # 联系我们
-│   │   │   ├── news.astro            # 新闻列表
-│   │   │   ├── news/[slug].astro     # 新闻详情
-│   │   │   ├── honors.astro          # 资质荣誉
+├── src/
+│   ├── content/          # 内容集合 (Markdown)
+│   │   ├── products/     # 产品数据
+│   │   └── news/         # 新闻数据
+│   ├── pages/            # 页面路由
+│   │   ├── index.astro           # 中文首页
+│   │   ├── about.astro           # 关于我们
+│   │   ├── contact.astro         # 联系我们
+│   │   ├── news.astro            # 新闻列表
+│   │   ├── news/[slug].astro     # 新闻详情
+│   │   ├── honors.astro          # 资质荣誉
+│   │   ├── products/
+│   │   │   ├── index.astro       # 产品列表
+│   │   │   └── [slug].astro      # 产品详情
+│   │   ├── en/                   # 英文页面
+│   │   │   ├── index.astro
+│   │   │   ├── about.astro
+│   │   │   ├── contact.astro
+│   │   │   ├── news.astro
+│   │   │   ├── news/[slug].astro
 │   │   │   ├── products/
-│   │   │   │   ├── index.astro       # 产品列表
-│   │   │   │   └── [slug].astro      # 产品详情
-│   │   │   └── en/                   # 英文页面
-│   │   ├── components/       # 可复用组件
-│   │   ├── layouts/          # 页面布局
-│   │   └── i18n/             # 多语言配置
-│   └── public/               # 静态资源
-└── README.md
+│   │   │   │   ├── index.astro
+│   │   │   │   └── [slug].astro
+│   │   │   └── honors.astro
+│   │   ├── 404.astro             # 404 页面
+│   │   └── sitemap.xml.ts        # Sitemap
+│   ├── components/       # 可复用组件
+│   │   └── FloatingContact.astro # 悬浮联系按钮
+│   ├── layouts/          # 页面布局
+│   └── i18n/             # 多语言配置
+└── public/               # 静态资源
 ```
 
 ## 快速开始
 
 ```bash
-cd frontend
-
 # 安装依赖
 npm install
 
@@ -99,13 +107,20 @@ featured: true
 - [x] 响应式设计 (移动端优先)
 - [x] 中英双语支持
 - [x] 现代化 UI 设计
-- [x] SEO 优化
+- [x] SEO 优化 (meta tags, Open Graph, 结构化数据, canonical, hreflang)
 - [x] 在线询盘表单
-- [x] 产品展示 (列表 + 详情)
+- [x] 产品展示 (列表 + 详情 + 分类筛选)
 - [x] 新闻中心 (列表 + 详情)
 - [x] 资质荣誉展示
 - [x] Content Collections 内容管理
-- [ ] 产品图片资源
+- [x] 双工厂地图 (新和/鳌头) + 导航链接 (高德/百度/腾讯)
+- [x] Sitemap.xml 自动生成
+- [x] Robots.txt
+- [x] 404 页面
+- [x] 悬浮联系按钮 (电话/WhatsApp/微信)
+- [x] 返回顶部按钮
+- [x] 完整英文页面
+- [ ] 产品图片资源 (需替换占位符)
 - [ ] 工厂视频嵌入
 - [ ] 询盘邮件通知
 - [ ] 部署上线
@@ -114,17 +129,13 @@ featured: true
 
 ### Vercel 部署 (推荐)
 
-1. 将代码推送到 GitHub
-2. 在 Vercel 导入项目
-3. 设置构建目录为 `frontend`
-4. 自动部署
-
-### 手动部署
-
-```bash
-npm run build
-# 将 dist/ 目录上传到任意静态托管服务
-```
+1. 访问 [vercel.com](https://vercel.com)
+2. 导入 `uykb/yaowei-web` 仓库
+3. 设置:
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+4. 点击 **Deploy**
+5. 绑定自定义域名 `gzyaowei.cn`
 
 ## 联系方式
 
